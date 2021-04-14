@@ -9,9 +9,33 @@ const ATP_DOUBLES_URL = 'https://www.atptour.com/en/rankings/doubles';
 const ATP_DOUBLES_RACE = 'https://www.atptour.com/en/rankings/doubles-team-rankings'
 
 /* ATP RANKINGS */
+async function getSinglesRankings() {
+
+  try {
+
+    let response = await axios.get(ATP_SINGLES_URL, {
+      headers:
+        {'User-Agent': 'Mozilla/5.0 (X11; CrOS x86_64 8172.45.0) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/51.0.2704.64 Safari/537.36'}
+      },
+        { timeout: 2 }
+    )
+
+    return response
+    
+  } catch (error) {
+
+    console.log("error atp singles")
+    console.log(error.response)
+    console.log(error.response.status)
+    console.log(error.response.data)
+    console.log("error atp singles")
+
+  }
+
+}
 
 // ATP singles rankings API response
-router.get('/rankings/singles', (req, res) => {
+router.get('/rankings/singles/', async (req, response, next) => {
 
   let rankings = [];
   let countries = [];
@@ -21,7 +45,17 @@ router.get('/rankings/singles', (req, res) => {
   let tournaments = [];
   let JSONResponse = [];
 
-  axios.get(ATP_SINGLES_URL).then((response) => {
+  await axios.get(ATP_SINGLES_URL, {
+    headers:
+      {'User-Agent': 'Mozilla/5.0 (X11; CrOS x86_64 8172.45.0) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/51.0.2704.64 Safari/537.36'}
+    },
+      { timeout: 2 }
+  ).then((response) => {
+
+    console.log("inside call 1")
+    console.log(response)
+    console.log(response.data)
+
     const $ = cheerio.load(response.data);
 
     // Scraping rankings
@@ -65,9 +99,11 @@ router.get('/rankings/singles', (req, res) => {
       })
     }
 
-    res.json(JSONResponse);
-  });
-});
+    response.json(JSONResponse);
+
+  })
+
+})
 
 // ATP Race to London API response
 router.get('/rankings/singles-race', (req, res) => {
@@ -123,6 +159,8 @@ router.get('/rankings/singles-race', (req, res) => {
         "tournaments_played": tournaments[i]
       })
     }
+
+    console.log(JSONResponse)
 
     res.json(JSONResponse);
   });
