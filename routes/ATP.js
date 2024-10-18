@@ -283,26 +283,5 @@ router.get('/rankings/doubles-race', (req, res) => {
   });
 });
 
-/* ATP STATISTICS*/
-
-// ATP stats leaderboard serve leaders API response
-router.get('/stats/serve-leaders', function (req, res) {
-  let players = [];
-  axios.get(SERVICE_GAMES_WON_URL).then((response) => {
-    const $ = cheerio.load(response.data);
-
-    $('.stats-listing-info-cell table tbody tr td').each((i, td) =>{
-    });
-
-    $('.stats-listing-name a').each((i, a) => {
-      players.push($(a).text())
-    });
-
-    res.json({
-      status: 'serve leaders!'
-    })
-  });
-});
-
 // Export API routes
 module.exports = router;
