@@ -4,12 +4,12 @@ const cheerio = require('cheerio');
 
 // ATP URLS
 const ATP_SINGLES_URL = 'https://www.atptour.com/en/rankings/singles';
-const ATP_SINGLES_RACE = 'https://www.atptour.com/en/rankings/singles-race-to-turin';
+const ATP_SINGLES_RACE_URL = 'https://www.atptour.com/en/rankings/singles-race-to-turin';
 const ATP_DOUBLES_URL = 'https://www.atptour.com/en/rankings/doubles';
-const ATP_DOUBLES_RACE = 'https://www.atptour.com/en/rankings/doubles-team-rankings'
+const ATP_DOUBLES_RACE_URL = 'https://www.atptour.com/en/rankings/doubles-team-rankings'
 
 /* ATP RANKINGS */
-async function getSinglesRankings() {
+async function getATPSinglesRankings() {
 
   try {
 
@@ -24,18 +24,18 @@ async function getSinglesRankings() {
     
   } catch (error) {
 
-    console.log("error atp singles")
+    console.log("Error - Atp Singles - BEGIN")
     console.log(error.response)
     console.log(error.response.status)
     console.log(error.response.data)
-    console.log("error atp singles")
+    console.log("Error ATP Singles - END")
 
   }
 
 }
 
 // ATP singles rankings API response
-router.get('/rankings/singles/', async (req, response, next) => {
+router.get('/rankings/singles', async (req, response, next) => {
 
   let rankings = [];
   let countries = [];
@@ -52,7 +52,7 @@ router.get('/rankings/singles/', async (req, response, next) => {
       { timeout: 2 }
   ).then((response) => {
 
-    console.log("inside call 1")
+    console.log("Inside ATP Singles Call")
     console.log(response)
     console.log(response.data)
 
@@ -116,7 +116,17 @@ router.get('/rankings/singles-race', (req, res) => {
   let tournaments = [];
   let JSONResponse = [];
 
-  axios.get(ATP_SINGLES_RACE).then((response) => {
+  axios.get(ATP_SINGLES_RACE_URL, {
+    headers:
+      {'User-Agent': 'Mozilla/5.0 (X11; CrOS x86_64 8172.45.0) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/51.0.2704.64 Safari/537.36'}
+  },
+    { timeout: 2 }
+  ).then((response) => {
+
+    console.log("Inside ATP Singles Race Call")
+    console.log(response)
+    console.log(response.data)
+
     const $ = cheerio.load(response.data);
 
     // Scraping rankings
@@ -172,7 +182,17 @@ router.get('/rankings/doubles', (req, res) => {
   let tournaments = [];
   let JSONResponse = [];
 
-  axios.get(ATP_DOUBLES_URL).then((response) => {
+  axios.get(ATP_DOUBLES_URL, {
+    headers:
+      {'User-Agent': 'Mozilla/5.0 (X11; CrOS x86_64 8172.45.0) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/51.0.2704.64 Safari/537.36'}
+  },
+    { timeout: 2 }
+  ).then((response) => {
+
+    console.log("Inside ATP Doubles Call")
+    console.log(response)
+    console.log(response.data)
+
     const $ = cheerio.load(response.data);
 
     // Scraping rankings
@@ -233,7 +253,18 @@ router.get('/rankings/doubles-race', (req, res) => {
   let tournaments = [];
   let JSONResponse = [];
 
-  axios.get(ATP_DOUBLES_RACE).then((response) => {
+  axios.get(ATP_DOUBLES_RACE_URL, {
+    headers:
+      {'User-Agent': 'Mozilla/5.0 (X11; CrOS x86_64 8172.45.0) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/51.0.2704.64 Safari/537.36'}
+  },
+    { timeout: 2 }
+  ).then((response) => {
+
+
+    console.log("Inside ATP Doubles Race Call")
+    console.log(response)
+    console.log(response.data)
+
     const $ = cheerio.load(response.data);
 
     // Scraping rankings
