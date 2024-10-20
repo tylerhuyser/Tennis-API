@@ -33,7 +33,7 @@ async function getWTASinglesRankings() {
   }
 }
 // WTA Singles Rankings API Response
-router.get('/rankings/singles', async (req, response, next) => {
+router.get('/rankings/singles', async (req, res) => {
   
   let rankings = [];
   let countries = [];
@@ -43,63 +43,72 @@ router.get('/rankings/singles', async (req, response, next) => {
   let tournaments = [];
   let JSONResponse = [];
 
-  await axios.get(WTA_SINGLES_URL, {
-    headers:
-      {'User-Agent': 'Mozilla/5.0 (X11; CrOS x86_64 8172.45.0) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/51.0.2704.64 Safari/537.36'}
-  },
-    { timeout: 2 }
-  ).then((response) => {
+  try { 
 
-    console.log("Inside ATP Singles Call")
-    console.log(response)
-    console.log(response.data)
+    const axiosResponse = await axios.get(WTA_SINGLES_URL, {
+      headers:
+        {'User-Agent': 'Mozilla/5.0 (X11; CrOS x86_64 8172.45.0) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/51.0.2704.64 Safari/537.36'}
+    },
+      { timeout: 2 }
+    )
+  
+      console.log("Inside WTA Singles Call")
+  
+    
+      const $ = cheerio.load(axiosResponse.data);
+  
+      // Scraping rankings
+    $('.rankings__list tbody tr .rankings__cell .rankings__rank').each((i, span) => {
+        console.log(span)
+        rankings.push($(span).text().trim());
+      });
+  
+      // Scraping countries
+      $('.rankings__list tbody tr .player td .flag').each((i, img) => {
+        countries.push($(img).attr('alt'));
+      });
+  
+      // Scraping names
+      $('.rankings__list tbody tr .rankings__cell--player a').each((i, a) => {
+        players.push($(a).text().trim());
+      });
+  
+      // Scraping ages
+      $('.rankings__list tbody tr .rankings__cell--age').each((i, td) => {
+        ages.push($(td).text().trim());
+      });
+  
+      // Scraping points
+      $('.rankings__list tbody tr .rankings__cell--points').each((i, td) => {
+        points.push($(td).text().trim());
+      });
+  
+      // Scraping tournaments played
+      $('.rankings__list tbody tr .rankings__cell--tournaments').each((i, td) => {
+        tournaments.push($(td).text().trim());
+      });
+    
+      console.log(players)
+  
+      for (let i = 0; i < rankings.length; i++){
+        JSONResponse.push({
+          "ranking": rankings[i],
+          "country": countries[i],
+          "player": players[i],
+          "age": ages[i],
+          "points": points[i],
+          "tournaments_played": tournaments[i]
+        })
+      }
+  
+      console.log(JSONResponse)
+      res.json(JSONResponse);
 
-    const $ = cheerio.load(response.data);
+  } catch (error) {
+    console.error(error)
+    res.status(500).json({ error: 'Failed to fetch WTA Singles Rankings' });
+  }
 
-    // Scraping rankings
-    $('rankings__list tbody tr .rankings__cell .rankings__rank').each((i, span) => {
-      rankings.push($(span).text().trim());
-    });
-
-    // Scraping countries
-    $('rankings__list tbody tr .player td .flag').each((i, img) => {
-      countries.push($(img).attr('alt'));
-    });
-
-    // Scraping names
-    $('rankings__list tbody tr .rankings__cell--player a').each((i, a) => {
-      players.push($(a).text().trim());
-    });
-
-    // Scraping ages
-    $('rankings__list tbody tr .rankings__cell--age').each((i, td) => {
-      ages.push($(td).text().trim());
-    });
-
-    // Scraping points
-    $('rankings__list tbody tr .rankings__cell--points').each((i, td) => {
-      points.push($(td).text().trim());
-    });
-
-    // Scraping tournaments played
-    $('rankings__list tbody tr .rankings__cell--tournaments').each((i, td) => {
-      tournaments.push($(td).text().trim());
-    });
-
-    for (let i = 0; i < rankings.length; i++){
-      JSONResponse.push({
-        "ranking": rankings[i],
-        "country": countries[i],
-        "player": players[i],
-        "age": ages[i],
-        "points": points[i],
-        "tournaments_played": tournaments[i]
-      })
-    }
-
-    response.json(JSONResponse);
-
-  })
 })
 
 // WTA Singles Race Rankings API Response
