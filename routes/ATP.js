@@ -179,7 +179,7 @@ router.get('/rankings/singles-race', async (req, res) => {
 });
 
 // ATP doubles rankings API response
-router.get('/rankings/doubles', (req, res) => {
+router.get('/rankings/doubles', async (req, res) => {
 
   let rankings = [];
   let countries = [];
@@ -189,64 +189,66 @@ router.get('/rankings/doubles', (req, res) => {
   let tournaments = [];
   let JSONResponse = [];
 
-  axios.get(ATP_DOUBLES_URL, {
-    headers:
-      {'User-Agent': 'Mozilla/5.0 (X11; CrOS x86_64 8172.45.0) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/51.0.2704.64 Safari/537.36'}
-  },
-    { timeout: 2 }
-  ).then((response) => {
+  try {
 
-    console.log("Inside ATP Doubles Call")
-    console.log(response)
-    console.log(response.data)
+    const axiosResponse = await axios.get(ATP_DOUBLES_URL, {
+      headers:
+        {'User-Agent': 'Mozilla/5.0 (X11; CrOS x86_64 8172.45.0) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/51.0.2704.64 Safari/537.36'}
+    },
+      { timeout: 2 }
+    )
+  
+      console.log("Inside ATP Doubles Call")
+  
+      const $ = cheerio.load(axiosResponse.data);
+  
+      // Scraping rankings
+      $('.mega-table tbody tr .rank.bold.heavy').each((i, td) => {
+        rankings.push($(td).text().trim());
+      });
+  
+      // Scraping countries
+      $('.mega-table tbody tr .player .player-stats .avatar .atp-flag use').each((i, use) => {
+        countries.push($(use).attr('href').split('/assets/atptour/assets/flags.svg#flag-')[1].toUpperCase());
+      });
+  
+      // Scraping names
+      $('.mega-table tbody tr .player .player-stats .name a span').each((i, span) => {
+        players.push($(span).text().trim());
+      });
+  
+      // Scraping ages
+      $('.mega-table tbody tr .age').each((i, td) => {
+        ages.push($(td).text().trim());
+      });
+  
+      // Scraping points
+      $('.mega-table tbody tr .points a').each((i, a) => {
+        points.push($(a).text().trim());
+      });
+  
+      // Scraping tournaments played
+      $('.mega-table tbody tr .tourns').each((i, td) => {
+        tournaments.push($(td).text().trim());
+      });
+  
+      for (let i = 0; i < rankings.length; i++){
+        JSONResponse.push({
+          "ranking": rankings[i],
+          "country": countries[i],
+          "player": players[i],
+          "age": ages[i],
+          "points": points[i],
+          "tournaments_played": tournaments[i]
+        })
+      }
+  
+      res.json(JSONResponse);
 
-    const $ = cheerio.load(response.data);
-
-    // Scraping rankings
-    $('.mega-table tbody tr .rank').each((i, td) => {
-      rankings.push($(td).text().trim());
-    });
-
-    // Scraping countries
-    $('.mega-table tbody tr .player .player-stats .avatar .atp-flag use').each((i, use) => {
-      countries.push($(use).attr('href'));
-    });
-
-    // Scraping names
-    $('.mega-table tbody tr .player .player-stats .name a span').each((i, span) => {
-      players.push($(span).text().trim());
-    });
-
-    // Scraping ages
-    $('.mega-table tbody tr .age').each((i, td) => {
-      ages.push($(td).text().trim());
-    });
-
-    // Scraping points
-    $('.mega-table tbody tr .points a').each((i, a) => {
-      points.push($(a).text().trim());
-    });
-
-    // Scraping tournaments played
-    $('.mega-table tbody tr .tourns').each((i, td) => {
-      tournaments.push($(td).text().trim());
-    });
-
-    // console.log(names)
-
-    for (let i = 0; i < rankings.length; i++){
-      JSONResponse.push({
-        "ranking": rankings[i],
-        "country": countries[i],
-        "player": players[i],
-        "age": ages[i],
-        "points": points[i],
-        "tournaments_played": tournaments[i]
-      })
-    }
-
-    res.json(JSONResponse);
-  });
+  } catch (error) {
+    console.error(error)
+    res.status(500).json({ error: 'Failed to fetch ATP Doubles Rankings.' });
+  }
 });
 
 // ATP doubles rankings API response
