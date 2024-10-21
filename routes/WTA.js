@@ -3,92 +3,130 @@ const axios  = require('axios');
 const cheerio = require('cheerio');
 
 // URLS
-const WTA_RANKINGS_URL = 'https://www.wtatennis.com/rankings';
+const WTA_SINGLES_URL = 'https://api.wtatennis.com/tennis/players/ranked?page=0&pageSize=100&type=rankSingles&sort=asc&name=&metric=SINGLES';
+const WTA_SINGLES_RACE_URL = 'https://api.wtatennis.com/tennis/players/ranked?page=0&pageSize=100&type=RankChampSingles&sort=asc&name=&metric=CHAMPSINGLES'
+const WTA_DOUBLES_URL = 'https://api.wtatennis.com/tennis/players/ranked?page=0&pageSize=100&type=rankDoubles&sort=asc&name=&metric=DOUBLES'
+const WTA_DOUBLES_RACE_URL = 'https://api.wtatennis.com/tennis/players/ranked/champDoubles?page=0&pageSize=1000&type=rank&sort=asc&name='
 
-/* WTA RANKINGS */
-const WTA_PLAYER_INDEX_URL = 'https://www.wtatennis.com/players';
-const WTA_COACHES_URL = 'https://www.wtatennis.com/coaches';
+// WTA RANKINGS
+async function getWTASinglesRankings() {
+  try {
 
-// WTA singles rankings API response
-router.get('/rankings/singles', (req, res) => {
-  axios.get(WTA_RANKINGS_URL).then((response) => {
-    const $ = cheerio.load(response.data)
-    console.log(response.data)
-    // console.log($('.dp-link').text())
-    res.json({status: 'wta singles!'})
-  });
-});
+    let response = await axios.get(WTA_SINGLES_URL, {
+      headers:
+        {'User-Agent': 'Mozilla/5.0 (X11; CrOS x86_64 8172.45.0) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/51.0.2704.64 Safari/537.36'}
+      },
+        { timeout: 2 }
+    )
 
-// WTA doubles rankings API response
-router.get('/wta/doubles', (req, res) => {
-});
+    return response
+    
 
-/* WTA STATISTICS */
+  } catch (error) {
 
-/* WTA PLAYER INFORMATION */
+    console.log("Error - WTA Singles - BEGIN")
+    console.log(error.response)
+    console.log(error.response.status)
+    console.log(error.response.data)
+    console.log("Error WTA Singles - END")
 
-// WTA player index API response
-router.get('/players/index', (req, res) => {
+  }
+}
+// WTA Singles Rankings API Response
+router.get('/rankings/singles', async (req, res) => {
 
-  let rankings = [];
-  let countries = [];
-  let players = [];
-  let JSONResponse = [];
+  try { 
 
-  axios.get(WTA_PLAYER_INDEX_URL).then((response) => {
-    const $ = cheerio.load(response.data);
+    const axiosResponse = await axios.get(WTA_SINGLES_URL, {
+      headers:
+        {'User-Agent': 'Mozilla/5.0 (Linux; Android 6.0; Nexus 5 Build/MRA58N) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Mobile Safari/537.36'}
+    },
+      { timeout: 10000 }
+    )
+  
+      console.log("Inside WTA Singles Race Call")
+  
+      // console.log(axiosResponse.data)
 
-    $('tbody tr .views-field-field-singles-ranking').each((i, td) => {
-      rankings.push($(td).text().trim());
-    });
+      res.json(axiosResponse.data);
 
-    $('tbody tr span').each((i, span) => {
-      countries.push($(span).data('tooltip'));
-    });
+  } catch (error) {
+    console.error(error)
+    res.status(500).json({ error: 'Failed to fetch WTA Singles Race Rankings' });
+  }
 
-    $('tbody tr .views-field-field-lastname').each((i, td) => {
-      const lastFirst = $(td).text().trim().replace(/\s/g, '');
-      const parts = lastFirst.split(',');
-      players.push(parts[1] + ' ' + parts[0]);
-    });
+})
 
-    for (let i = 0; i < rankings.length; i++){
-      JSONResponse.push({
-        "ranking": rankings[i],
-        "country": countries[i],
-        "player": players[i]
-      })
-    }
+// WTA Singles Race Rankings API Response
 
-    res.json(JSONResponse);
-  });
-});
+router.get('/rankings/singles-race', async (req, res) => {
 
-// WTA coaches API response
-router.get('/players/coaches', function (req, res) {
+  try { 
 
-  let coaches = [];
-  let countries = [];
-  let players = [];
-  let prev_players = [];
-  let JSONResponse = [];
+    const axiosResponse = await axios.get(WTA_SINGLES_RACE_URL, {
+      headers:
+        {'User-Agent': 'Mozilla/5.0 (Linux; Android 6.0; Nexus 5 Build/MRA58N) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Mobile Safari/537.36'}
+    },
+      { timeout: 10000 }
+    )
+  
+      console.log("Inside WTA Singles Call")
+  
+      // console.log(axiosResponse.data)
 
-  axios.get(WTA_COACHES_URL).then((response) => {
-    const $ = cheerio.load(response.data);
+      res.json(axiosResponse.data);
 
-    $('tbody tr .profile__prev-name').each((i, div) => {
-      const lastFirst = $(div).text().trim().replace(/\s/g, '');
-      const parts = lastFirst.split(',');
-      coaches.push(parts[1] + ' ' + parts[0]);
-    });
+  } catch (error) {
+    console.error(error)
+    res.status(500).json({ error: 'Failed to fetch WTA Singles Rankings' });
+  }
 
-    for (let i = 0; i < coaches.length; i++){
-      JSONResponse.push({
-        "coach": coaches[i]
-      })
-    }
-    res.json(JSONResponse);
-  })
+})
+
+router.get('/rankings/doubles', async (req, res) => {
+  
+  try { 
+
+    const axiosResponse = await axios.get(WTA_DOUBLES_URL, {
+      headers:
+        {'User-Agent': 'Mozilla/5.0 (Linux; Android 6.0; Nexus 5 Build/MRA58N) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Mobile Safari/537.36'}
+    },
+      { timeout: 10000 }
+    )
+  
+      console.log("Inside WTA Doubles Call")
+  
+      // console.log(axiosResponse.data)
+
+      res.json(axiosResponse.data);
+
+  } catch (error) {
+    console.error(error)
+    res.status(500).json({ error: 'Failed to fetch WTA Doubles Rankings' });
+  }
+})
+
+router.get('/rankings/doubles-race', async (req, res) => {
+  
+  try { 
+
+    const axiosResponse = await axios.get(WTA_DOUBLES_RACE_URL, {
+      headers:
+        {'User-Agent': 'Mozilla/5.0 (Linux; Android 6.0; Nexus 5 Build/MRA58N) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Mobile Safari/537.36'}
+    },
+      { timeout: 10000 }
+    )
+  
+      console.log("Inside WTA Doubles Race Call")
+  
+      // console.log(axiosResponse.data)
+
+      res.json(axiosResponse.data);
+
+  } catch (error) {
+    console.error(error)
+    res.status(500).json({ error: 'Failed to fetch WTA Doubles Race Rankings' });
+  }
 })
 
 // Export API routes
