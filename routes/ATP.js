@@ -58,32 +58,32 @@ router.get('/rankings/singles', async (req, res) => {
     const $ = cheerio.load(axiosResponse.data);
   
       // Scraping rankings
-    $('.mega-table tbody tr .rank.bold.heavy').each((i, td) => {
+    $('.desktop-table tbody tr .rank.bold.heavy').each((i, td) => {
       rankings.push($(td).text().trim());
     });
   
       // Scraping countries
-    $('.mega-table tbody tr .player .player-stats .avatar .atp-flag use').each((i, use) => {
+    $('.desktop-table tbody tr .player .player-stats .avatar .atp-flag use').each((i, use) => {
       countries.push($(use).attr('href').split('/assets/atptour/assets/flags.svg#flag-')[1].toUpperCase());
     });
   
       // Scraping names
-    $('.mega-table tbody tr .player .player-stats .name a span').each((i, span) => {
+    $('.desktop-table tbody tr .player .player-stats .name a span').each((i, span) => {
       names.push($(span).text().trim());
     });
   
       // Scraping ages
-    $('.mega-table tbody tr .age').each((i, td) => {
+    $('.desktop-table tbody tr .age').each((i, td) => {
       ages.push($(td).text().trim());
     });
   
       // Scraping points
-    $('.mega-table tbody tr .points a').each((i, a) => {
+    $('.desktop-table tbody tr .points a').each((i, a) => {
       points.push($(a).text().trim());
     });
   
       // Scraping tournaments played
-    $('.mega-table tbody tr .tourns').each((i, td) => {
+    $('.desktop-table tbody tr .tourns').each((i, td) => {
       tournaments.push($(td).text().trim());
     });
   
@@ -134,27 +134,27 @@ router.get('/rankings/singles-race', async (req, res) => {
       const $ = cheerio.load(axiosResponse.data);
   
       // Scraping rankings
-      $('.mega-table tbody tr .rank.bold.heavy').each((i, td) => {
+      $('.desktop-table tbody tr .rank.bold.heavy').each((i, td) => {
         rankings.push($(td).text().trim());
       });
   
       // Scraping countries
-      $('.mega-table tbody tr .player .player-stats .avatar .atp-flag use').each((i, use) => {
+      $('.desktop-table tbody tr .player .player-stats .avatar .atp-flag use').each((i, use) => {
         countries.push($(use).attr('href').split('/assets/atptour/assets/flags.svg#flag-')[1].toUpperCase());
       });
   
       // Scraping names
-      $('.mega-table tbody tr .player .player-stats .name a span').each((i, span) => {
-        players.push($(span).text().trim());
+      $('.desktop-table tbody tr .player .player-stats .name a span').each((i, span) => {
+        names.push($(span).text().trim());
       });
   
       // Scraping ages
-      $('.mega-table tbody tr .age').each((i, td) => {
+      $('.desktop-table tbody tr .age').each((i, td) => {
         ages.push($(td).text().trim());
       });
   
       // Scraping points
-      $('.mega-table tbody tr .points').each((i, td) => {
+      $('.desktop-table tbody tr .points').each((i, td) => {
         points.push($(td).text().trim());
       });
   
@@ -203,32 +203,32 @@ router.get('/rankings/doubles', async (req, res) => {
       const $ = cheerio.load(axiosResponse.data);
   
       // Scraping rankings
-      $('.mega-table tbody tr .rank.bold.heavy').each((i, td) => {
+      $('.desktop-table tbody tr .rank.bold.heavy').each((i, td) => {
         rankings.push($(td).text().trim());
       });
   
       // Scraping countries
-      $('.mega-table tbody tr .player .player-stats .avatar .atp-flag use').each((i, use) => {
+      $('.desktop-table tbody tr .player .player-stats .avatar .atp-flag use').each((i, use) => {
         countries.push($(use).attr('href').split('/assets/atptour/assets/flags.svg#flag-')[1].toUpperCase());
       });
   
       // Scraping names
-      $('.mega-table tbody tr .player .player-stats .name a span').each((i, span) => {
+      $('.desktop-table tbody tr .player .player-stats .name a span').each((i, span) => {
         names.push($(span).text().trim());
       });
   
       // Scraping ages
-      $('.mega-table tbody tr .age').each((i, td) => {
+      $('.desktop-table tbody tr .age').each((i, td) => {
         ages.push($(td).text().trim());
       });
   
       // Scraping points
-      $('.mega-table tbody tr .points a').each((i, a) => {
+      $('.desktop-table tbody tr .points a').each((i, a) => {
         points.push($(a).text().trim());
       });
   
       // Scraping tournaments played
-      $('.mega-table tbody tr .tourns').each((i, td) => {
+      $('.desktop-table tbody tr .tourns').each((i, td) => {
         tournaments.push($(td).text().trim());
       });
   
@@ -278,38 +278,38 @@ router.get('/rankings/doubles-race', async (req, res) => {
     const $ = cheerio.load(axiosResponse.data);
   
       // Scraping rankings
-    $('.mega-table tbody tr .rank.bold.heavy').each((i, td) => {
+    $('.desktop-table tbody tr .rank.bold.heavy').each((i, td) => {
       rankings.push($(td).text().trim());
     });
   
       // Scraping countries (Player 1)
-    $('.mega-table tbody tr .player .player-stats .name .player1 .atp-flag use').each((i, use) => {
+    $('.desktop-table tbody tr .player .player-stats .name .player1 .atp-flag use').each((i, use) => {
       playerOneCountry.push($(use).attr('href').split('/assets/atptour/assets/flags.svg#flag-')[1].toUpperCase())
     });
 
          // Scraping countries (Player 2)
-    $('.mega-table tbody tr .player .player-stats .name .player2 .atp-flag use').each((i, use) => {
+    $('.desktop-table tbody tr .player .player-stats .name .player2 .atp-flag use').each((i, use) => {
       playerTwoCountry.push($(use).attr('href').split('/assets/atptour/assets/flags.svg#flag-')[1].toUpperCase())
     });
   
       // Scraping Names (Player 1)
-    $('.mega-table tbody tr .player .player-stats .name .player1 a').each((i, span) => {
+    $('.desktop-table tbody tr .player .player-stats .name .player1 a').each((i, span) => {
        playerOneName.push($(span).attr('href').split("/")[3].split("-").map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(" ").trim())
     });
 
     // Scraping Names (Player 2)
-    $('.mega-table tbody tr .player .player-stats .name .player2 a').each((i, span) => {
+    $('.desktop-table tbody tr .player .player-stats .name .player2 a').each((i, span) => {
       playerTwoName.push($(span).attr('href').split("/")[3].split("-").map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(" ").trim())
     });
 
     // Scraping Ages
-    $('.mega-table tbody tr .age.tiny-cell').each((i, td) => {
+    $('.desktop-table tbody tr .age.tiny-cell').each((i, td) => {
       playerOneAge.push($(td).text().split("/")[0].trim())
       playerTwoAge.push($(td).text().split("/")[1].trim())
     });
   
       // Scraping points
-    $('.mega-table tbody tr .points').each((i, td) => {
+    $('.desktop-table tbody tr .points').each((i, td) => {
       points.push($(td).text().trim());
     });
   
