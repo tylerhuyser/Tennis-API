@@ -39,7 +39,7 @@ router.get('/rankings/singles', async (req, res) => {
 
   let rankings = [];
   let countries = [];
-  let players = [];
+  let names = [];
   let ages = [];
   let points = [];
   let tournaments = [];
@@ -69,12 +69,12 @@ router.get('/rankings/singles', async (req, res) => {
   
       // Scraping names
     $('.mega-table tbody tr .player .player-stats .name a span').each((i, span) => {
-       players.push($(span).text().trim());
+      names.push($(span).text().trim());
     });
   
       // Scraping ages
     $('.mega-table tbody tr .age').each((i, td) => {
-       ages.push($(td).text().trim());
+      ages.push($(td).text().trim());
     });
   
       // Scraping points
@@ -92,7 +92,7 @@ router.get('/rankings/singles', async (req, res) => {
       JSONResponse.push({
         "ranking": rankings[i],
         "country": countries[i],
-        "player": players[i],
+        "name": names[i],
         "age": ages[i],
         "points": points[i],
         "tournaments_played": tournaments[i]
@@ -114,7 +114,7 @@ router.get('/rankings/singles-race', async (req, res) => {
 
   let rankings = [];
   let countries = [];
-  let players = [];
+  let names = [];
   let ages = [];
   let points = [];
   let JSONResponse = [];
@@ -162,7 +162,7 @@ router.get('/rankings/singles-race', async (req, res) => {
         JSONResponse.push({
           "ranking": rankings[i],
           "country": countries[i],
-          "player": players[i],
+          "name": names[i],
           "age": ages[i],
           "points": points[i],
         })
@@ -183,7 +183,7 @@ router.get('/rankings/doubles', async (req, res) => {
 
   let rankings = [];
   let countries = [];
-  let players = [];
+  let names = [];
   let ages = [];
   let points = [];
   let tournaments = [];
@@ -214,7 +214,7 @@ router.get('/rankings/doubles', async (req, res) => {
   
       // Scraping names
       $('.mega-table tbody tr .player .player-stats .name a span').each((i, span) => {
-        players.push($(span).text().trim());
+        names.push($(span).text().trim());
       });
   
       // Scraping ages
@@ -236,7 +236,7 @@ router.get('/rankings/doubles', async (req, res) => {
         JSONResponse.push({
           "ranking": rankings[i],
           "country": countries[i],
-          "player": players[i],
+          "name": names[i],
           "age": ages[i],
           "points": points[i],
           "tournaments_played": tournaments[i]
@@ -317,13 +317,13 @@ router.get('/rankings/doubles-race', async (req, res) => {
       JSONResponse.push({
         "ranking": rankings[i],
         "player1": {
-          "fullName": playerOneName[i],
-          "countrCode": playerOneCountry[i],
+          "name": playerOneName[i],
+          "country": playerOneCountry[i],
           "age": playerOneAge[i]
         },
         "player2": {
-          "fullName": playerTwoName[i],
-          "countrCode": playerTwoCountry[i],
+          "name": playerTwoName[i],
+          "country": playerTwoCountry[i],
           "age": playerTwoAge[i]
         },
         "points": points[i],
