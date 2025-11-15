@@ -1,13 +1,9 @@
-const axios = require('axios');
 const cheerio = require('cheerio');
+const fetchPage = require('../utils/fetchPage');
 const buildEntry = require('./buildEntry');
 
 async function scrapeATPDoubles(url) {
-  const response = await axios.get(url, {
-    headers: {
-      'User-Agent': 'Mozilla/5.0'
-    }
-  });
+  const response = await fetchPage(url);
 
   const $ = cheerio.load(response.data);
 
@@ -49,9 +45,15 @@ async function scrapeATPDoubles(url) {
   });
 
   return rankings.map((_, i) =>
-    buildEntry(rankings[i], countries[i], names[i], ages[i], points[i], tournaments[i])
-  );
-
+    buildEntry({
+      ranking: rankings[i],
+      country: countries[i],
+      name: names[i],
+      age: ages[i],
+      points: points[i],
+      tournaments_played: tournaments[i]
+    })
+  )
 }
 
 module.exports = {

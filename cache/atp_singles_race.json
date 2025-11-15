@@ -1,0 +1,702 @@
+[
+  {
+    "ranking": "1",
+    "country": "ESP",
+    "name": "Carlos Alcaraz",
+    "age": "22",
+    "points": "11,050"
+  },
+  {
+    "ranking": "2",
+    "country": "ITA",
+    "name": "Jannik Sinner",
+    "age": "24",
+    "points": "10,000"
+  },
+  {
+    "ranking": "3",
+    "country": "GER",
+    "name": "Alexander Zverev",
+    "age": "28",
+    "points": "4,960"
+  },
+  {
+    "ranking": "4",
+    "country": "SRB",
+    "name": "Novak Djokovic",
+    "age": "38",
+    "points": "4,830"
+  },
+  {
+    "ranking": "5",
+    "country": "USA",
+    "name": "Ben Shelton",
+    "age": "23",
+    "points": "3,970"
+  },
+  {
+    "ranking": "6",
+    "country": "USA",
+    "name": "Taylor Fritz",
+    "age": "28",
+    "points": "3,935"
+  },
+  {
+    "ranking": "7",
+    "country": "AUS",
+    "name": "Alex de Minaur",
+    "age": "26",
+    "points": "3,935"
+  },
+  {
+    "ranking": "8",
+    "country": "CAN",
+    "name": "Felix Auger-Aliassime",
+    "age": "25",
+    "points": "3,845"
+  },
+  {
+    "ranking": "9",
+    "country": "ITA",
+    "name": "Lorenzo Musetti",
+    "age": "23",
+    "points": "3,840"
+  },
+  {
+    "ranking": "10",
+    "country": "GBR",
+    "name": "Jack Draper",
+    "age": "23",
+    "points": "2,990"
+  },
+  {
+    "ranking": "11",
+    "country": "KAZ",
+    "name": "Alexander Bublik",
+    "age": "28",
+    "points": "2,870"
+  },
+  {
+    "ranking": "12",
+    "country": "NOR",
+    "name": "Casper Ruud",
+    "age": "26",
+    "points": "2,835"
+  },
+  {
+    "ranking": "13",
+    "country": "RUS",
+    "name": "Daniil Medvedev",
+    "age": "29",
+    "points": "2,760"
+  },
+  {
+    "ranking": "14",
+    "country": "ESP",
+    "name": "Alejandro Davidovich Fokina",
+    "age": "26",
+    "points": "2,635"
+  },
+  {
+    "ranking": "15",
+    "country": "DEN",
+    "name": "Holger Rune",
+    "age": "22",
+    "points": "2,590"
+  },
+  {
+    "ranking": "16",
+    "country": "RUS",
+    "name": "Andrey Rublev",
+    "age": "28",
+    "points": "2,520"
+  },
+  {
+    "ranking": "17",
+    "country": "CZE",
+    "name": "Jiri Lehecka",
+    "age": "24",
+    "points": "2,325"
+  },
+  {
+    "ranking": "18",
+    "country": "RUS",
+    "name": "Karen Khachanov",
+    "age": "29",
+    "points": "2,320"
+  },
+  {
+    "ranking": "19",
+    "country": "CZE",
+    "name": "Jakub Mensik",
+    "age": "20",
+    "points": "2,180"
+  },
+  {
+    "ranking": "20",
+    "country": "USA",
+    "name": "Tommy Paul",
+    "age": "28",
+    "points": "2,100"
+  },
+  {
+    "ranking": "21",
+    "country": "ARG",
+    "name": "Francisco Cerundolo",
+    "age": "27",
+    "points": "2,085"
+  },
+  {
+    "ranking": "22",
+    "country": "ITA",
+    "name": "Flavio Cobolli",
+    "age": "23",
+    "points": "2,025"
+  },
+  {
+    "ranking": "23",
+    "country": "CAN",
+    "name": "Denis Shapovalov",
+    "age": "26",
+    "points": "1,675"
+  },
+  {
+    "ranking": "24",
+    "country": "BRA",
+    "name": "Joao Fonseca",
+    "age": "19",
+    "points": "1,657"
+  },
+  {
+    "ranking": "25",
+    "country": "NED",
+    "name": "Tallon Griekspoor",
+    "age": "29",
+    "points": "1,615"
+  },
+  {
+    "ranking": "26",
+    "country": "ITA",
+    "name": "Luciano Darderi",
+    "age": "23",
+    "points": "1,609"
+  },
+  {
+    "ranking": "27",
+    "country": "GBR",
+    "name": "Cameron Norrie",
+    "age": "30",
+    "points": "1,573"
+  },
+  {
+    "ranking": "28",
+    "country": "USA",
+    "name": "Learner Tien",
+    "age": "19",
+    "points": "1,550"
+  },
+  {
+    "ranking": "29",
+    "country": "FRA",
+    "name": "Arthur Rinderknech",
+    "age": "30",
+    "points": "1,540"
+  },
+  {
+    "ranking": "30",
+    "country": "USA",
+    "name": "Frances Tiafoe",
+    "age": "27",
+    "points": "1,510"
+  },
+  {
+    "ranking": "31",
+    "country": "MON",
+    "name": "Valentin Vacherot",
+    "age": "26",
+    "points": "1,483"
+  },
+  {
+    "ranking": "32",
+    "country": "CZE",
+    "name": "Tomas Machac",
+    "age": "25",
+    "points": "1,445"
+  },
+  {
+    "ranking": "33",
+    "country": "USA",
+    "name": "Brandon Nakashima",
+    "age": "24",
+    "points": "1,430"
+  },
+  {
+    "ranking": "34",
+    "country": "GRE",
+    "name": "Stefanos Tsitsipas",
+    "age": "27",
+    "points": "1,425"
+  },
+  {
+    "ranking": "35",
+    "country": "FRA",
+    "name": "Corentin Moutet",
+    "age": "26",
+    "points": "1,408"
+  },
+  {
+    "ranking": "36",
+    "country": "ESP",
+    "name": "Jaume Munar",
+    "age": "28",
+    "points": "1,395"
+  },
+  {
+    "ranking": "37",
+    "country": "FRA",
+    "name": "Ugo Humbert",
+    "age": "27",
+    "points": "1,380"
+  },
+  {
+    "ranking": "38",
+    "country": "USA",
+    "name": "Alex Michelsen",
+    "age": "21",
+    "points": "1,325"
+  },
+  {
+    "ranking": "39",
+    "country": "ITA",
+    "name": "Lorenzo Sonego",
+    "age": "30",
+    "points": "1,265"
+  },
+  {
+    "ranking": "40",
+    "country": "FRA",
+    "name": "Arthur Fils",
+    "age": "21",
+    "points": "1,260"
+  },
+  {
+    "ranking": "41",
+    "country": "CAN",
+    "name": "Gabriel Diallo",
+    "age": "24",
+    "points": "1,253"
+  },
+  {
+    "ranking": "42",
+    "country": "FRA",
+    "name": "Alexandre Muller",
+    "age": "28",
+    "points": "1,230"
+  },
+  {
+    "ranking": "43",
+    "country": "BEL",
+    "name": "Zizou Bergs",
+    "age": "26",
+    "points": "1,218"
+  },
+  {
+    "ranking": "44",
+    "country": "BUL",
+    "name": "Grigor Dimitrov",
+    "age": "34",
+    "points": "1,180"
+  },
+  {
+    "ranking": "45",
+    "country": "ARG",
+    "name": "Sebastian Baez",
+    "age": "24",
+    "points": "1,155"
+  },
+  {
+    "ranking": "46",
+    "country": "GER",
+    "name": "Daniel Altmaier",
+    "age": "27",
+    "points": "1,148"
+  },
+  {
+    "ranking": "47",
+    "country": "POR",
+    "name": "Nuno Borges",
+    "age": "28",
+    "points": "1,145"
+  },
+  {
+    "ranking": "48",
+    "country": "USA",
+    "name": "Sebastian Korda",
+    "age": "25",
+    "points": "1,100"
+  },
+  {
+    "ranking": "49",
+    "country": "ARG",
+    "name": "Camilo Ugo Carabelli",
+    "age": "26",
+    "points": "1,078"
+  },
+  {
+    "ranking": "50",
+    "country": "USA",
+    "name": "Reilly Opelka",
+    "age": "28",
+    "points": "1,026"
+  },
+  {
+    "ranking": "51",
+    "country": "HUN",
+    "name": "Fabian Marozsan",
+    "age": "26",
+    "points": "1,025"
+  },
+  {
+    "ranking": "52",
+    "country": "SRB",
+    "name": "Miomir Kecmanovic",
+    "age": "26",
+    "points": "1,025"
+  },
+  {
+    "ranking": "53",
+    "country": "USA",
+    "name": "Jenson Brooksby",
+    "age": "25",
+    "points": "1,017"
+  },
+  {
+    "ranking": "54",
+    "country": "AUS",
+    "name": "Alexei Popyrin",
+    "age": "26",
+    "points": "1,000"
+  },
+  {
+    "ranking": "55",
+    "country": "HUN",
+    "name": "Marton Fucsovics",
+    "age": "33",
+    "points": "963"
+  },
+  {
+    "ranking": "56",
+    "country": "ITA",
+    "name": "Matteo Berrettini",
+    "age": "29",
+    "points": "945"
+  },
+  {
+    "ranking": "57",
+    "country": "BIH",
+    "name": "Damir Dzumhur",
+    "age": "33",
+    "points": "937"
+  },
+  {
+    "ranking": "58",
+    "country": "FRA",
+    "name": "Valentin Royer",
+    "age": "24",
+    "points": "936"
+  },
+  {
+    "ranking": "59",
+    "country": "FRA",
+    "name": "Giovanni Mpetshi Perricard",
+    "age": "22",
+    "points": "925"
+  },
+  {
+    "ranking": "60",
+    "country": "ARG",
+    "name": "Tomas Martin Etcheverry",
+    "age": "26",
+    "points": "920"
+  },
+  {
+    "ranking": "61",
+    "country": "ARG",
+    "name": "Francisco Comesana",
+    "age": "25",
+    "points": "904"
+  },
+  {
+    "ranking": "62",
+    "country": "USA",
+    "name": "Aleksandar Kovacevic",
+    "age": "27",
+    "points": "890"
+  },
+  {
+    "ranking": "63",
+    "country": "ITA",
+    "name": "Matteo Arnaldi",
+    "age": "24",
+    "points": "883"
+  },
+  {
+    "ranking": "64",
+    "country": "USA",
+    "name": "Ethan Quinn",
+    "age": "21",
+    "points": "864"
+  },
+  {
+    "ranking": "65",
+    "country": "FRA",
+    "name": "Terence Atmane",
+    "age": "23",
+    "points": "862"
+  },
+  {
+    "ranking": "66",
+    "country": "POL",
+    "name": "Kamil Majchrzak",
+    "age": "29",
+    "points": "861"
+  },
+  {
+    "ranking": "67",
+    "country": "USA",
+    "name": "Marcos Giron",
+    "age": "32",
+    "points": "855"
+  },
+  {
+    "ranking": "68",
+    "country": "FRA",
+    "name": "Arthur Cazaux",
+    "age": "23",
+    "points": "848"
+  },
+  {
+    "ranking": "69",
+    "country": "FRA",
+    "name": "Gael Monfils",
+    "age": "39",
+    "points": "825"
+  },
+  {
+    "ranking": "70",
+    "country": "FRA",
+    "name": "Adrian Mannarino",
+    "age": "37",
+    "points": "817"
+  },
+  {
+    "ranking": "71",
+    "country": "GBR",
+    "name": "Jacob Fearnley",
+    "age": "24",
+    "points": "787"
+  },
+  {
+    "ranking": "72",
+    "country": "ITA",
+    "name": "Mattia Bellucci",
+    "age": "24",
+    "points": "783"
+  },
+  {
+    "ranking": "73",
+    "country": "ARG",
+    "name": "Mariano Navone",
+    "age": "24",
+    "points": "780"
+  },
+  {
+    "ranking": "74",
+    "country": "BEL",
+    "name": "Raphael Collignon",
+    "age": "23",
+    "points": "779"
+  },
+  {
+    "ranking": "75",
+    "country": "POL",
+    "name": "Hubert Hurkacz",
+    "age": "28",
+    "points": "775"
+  },
+  {
+    "ranking": "76",
+    "country": "CRO",
+    "name": "Marin Cilic",
+    "age": "37",
+    "points": "765"
+  },
+  {
+    "ranking": "77",
+    "country": "NED",
+    "name": "Jesper de Jong",
+    "age": "25",
+    "points": "763"
+  },
+  {
+    "ranking": "78",
+    "country": "NED",
+    "name": "Botic van de Zandschulp",
+    "age": "30",
+    "points": "756"
+  },
+  {
+    "ranking": "79",
+    "country": "AUS",
+    "name": "Adam Walton",
+    "age": "26",
+    "points": "740"
+  },
+  {
+    "ranking": "80",
+    "country": "AUT",
+    "name": "Filip Misolic",
+    "age": "24",
+    "points": "726"
+  },
+  {
+    "ranking": "81",
+    "country": "CHI",
+    "name": "Alejandro Tabilo",
+    "age": "28",
+    "points": "721"
+  },
+  {
+    "ranking": "82",
+    "country": "AUS",
+    "name": "Aleksandar Vukic",
+    "age": "29",
+    "points": "718"
+  },
+  {
+    "ranking": "83",
+    "country": "SRB",
+    "name": "Hamad Medjedovic",
+    "age": "22",
+    "points": "718"
+  },
+  {
+    "ranking": "84",
+    "country": "GER",
+    "name": "Jan-Lennard Struff",
+    "age": "35",
+    "points": "711"
+  },
+  {
+    "ranking": "85",
+    "country": "ARG",
+    "name": "Juan Manuel Cerundolo",
+    "age": "23",
+    "points": "704"
+  },
+  {
+    "ranking": "86",
+    "country": "ITA",
+    "name": "Luca Nardi",
+    "age": "22",
+    "points": "699"
+  },
+  {
+    "ranking": "87",
+    "country": "CZE",
+    "name": "Dalibor Svrcina",
+    "age": "23",
+    "points": "699"
+  },
+  {
+    "ranking": "88",
+    "country": "USA",
+    "name": "Eliot Spizzirri",
+    "age": "23",
+    "points": "694"
+  },
+  {
+    "ranking": "89",
+    "country": "USA",
+    "name": "Emilio Nava",
+    "age": "23",
+    "points": "684"
+  },
+  {
+    "ranking": "90",
+    "country": "ESP",
+    "name": "Pablo Carreno Busta",
+    "age": "34",
+    "points": "681"
+  },
+  {
+    "ranking": "91",
+    "country": "FRA",
+    "name": "Quentin Halys",
+    "age": "29",
+    "points": "679"
+  },
+  {
+    "ranking": "92",
+    "country": "ESP",
+    "name": "Roberto Bautista Agut",
+    "age": "37",
+    "points": "670"
+  },
+  {
+    "ranking": "93",
+    "country": "JPN",
+    "name": "Shintaro Mochizuki",
+    "age": "22",
+    "points": "669"
+  },
+  {
+    "ranking": "94",
+    "country": "ESP",
+    "name": "Pedro Martinez",
+    "age": "28",
+    "points": "668"
+  },
+  {
+    "ranking": "95",
+    "country": "FRA",
+    "name": "Benjamin Bonzi",
+    "age": "29",
+    "points": "667"
+  },
+  {
+    "ranking": "96",
+    "country": "KAZ",
+    "name": "Alexander Shevchenko",
+    "age": "24",
+    "points": "662"
+  },
+  {
+    "ranking": "97",
+    "country": "FRA",
+    "name": "Hugo Gaston",
+    "age": "25",
+    "points": "653"
+  },
+  {
+    "ranking": "98",
+    "country": "SRB",
+    "name": "Laslo Djere",
+    "age": "30",
+    "points": "652"
+  },
+  {
+    "ranking": "99",
+    "country": "CHI",
+    "name": "Cristian Garin",
+    "age": "29",
+    "points": "651"
+  },
+  {
+    "ranking": "100",
+    "country": "AUS",
+    "name": "Tristan Schoolkate",
+    "age": "24",
+    "points": "649"
+  }
+]
