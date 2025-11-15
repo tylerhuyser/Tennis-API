@@ -1,343 +1,61 @@
+// routes/ATP.js
 const router = require('express').Router();
-const axios  = require('axios');
-const cheerio = require('cheerio');
+const { readFreshCache, writeCache, readStaleCache } = require('../utils/cache-handler');
+const paths = require('../utils/paths');
 
-// ATP URLS
-const ATP_SINGLES_URL = 'https://www.atptour.com/en/rankings/singles';
-const ATP_SINGLES_RACE_URL = 'https://www.atptour.com/en/rankings/singles-race-to-turin';
-const ATP_DOUBLES_URL = 'https://www.atptour.com/en/rankings/doubles';
-const ATP_DOUBLES_RACE_URL = 'https://www.atptour.com/en/rankings/doubles-team-rankings'
+const { scrapeATPSingles } = require('../scrapers/atpSinglesScraper');
+const { scrapeATPSinglesRace } = require('../scrapers/atpSinglesRaceScraper');
+const { scrapeATPDoubles } = require('../scrapers/atpDoublesScraper');
+const { scrapeATPDoublesRace } = require('../scrapers/atpDoublesRaceScraper');
 
-/* ATP RANKINGS */
-async function getATPSinglesRankings() {
 
+async function serveRoute(cacheKey, scraper, res) {
   try {
-
-    let response = await axios.get(ATP_SINGLES_URL, {
-      headers:
-        {'User-Agent': 'Mozilla/5.0 (X11; CrOS x86_64 8172.45.0) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/51.0.2704.64 Safari/537.36'}
-      },
-        { timeout: 2 }
-    )
-
-    return response
     
-  } catch (error) {
+    // 1. Serve Fresh Cash
+    const fresh = readFreshCache(cacheKey);
+    if (fresh) return res.json({ source: 'cache', data: fresh });
 
-    console.log("Error - Atp Singles - BEGIN")
-    console.log(error.response)
-    console.log(error.response.status)
-    console.log(error.response.data)
-    console.log("Error ATP Singles - END")
+    // 2. If Stale, Scrape Data
+    const scraped = await scraper(); // scraper should return array
+    // 2.a. Write Freshly Scraped Data to Cashe
+    writeCache(cacheKey, scraped);
 
+    return res.json({ source: 'fresh', data: scraped });
+
+  } catch (err) {
+
+    console.error(`Error in serveRoute for ${cacheKey}:`, err);
+
+    // 3) If error, Fallback to Stale Cache
+    const stale = readStaleCache(cacheKey);
+    if (stale) return res.json({ source: 'stale-cache', data: stale });
+
+    // 4) Otherwise, Serve a Hard Failure
+    return res.status(500).json({ error: 'Failed to fetch rankings.' });
   }
-
 }
 
-// ATP singles rankings API response
+/* ROUTES */
+
+// GET /atp/rankings/singles
 router.get('/rankings/singles', async (req, res) => {
+  await serveRoute(paths.ATP_SINGLES, scrapeATPSingles, res);
+});
 
-  let rankings = [];
-  let countries = [];
-  let names = [];
-  let ages = [];
-  let points = [];
-  let tournaments = [];
-  let JSONResponse = [];
-
-  try {
-    const axiosResponse = await axios.get(ATP_SINGLES_URL, {
-      headers:
-        {'User-Agent': 'Mozilla/5.0 (X11; CrOS x86_64 8172.45.0) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/51.0.2704.64 Safari/537.36'}
-      },
-        { timeout: 2 }
-    )
-  
-    console.log("Inside ATP Singles Call")
-  
-    const $ = cheerio.load(axiosResponse.data);
-  
-      // Scraping rankings
-    $('.desktop-table tbody tr .rank.bold.heavy').each((i, td) => {
-      rankings.push($(td).text().trim());
-    });
-  
-      // Scraping countries
-    $('.desktop-table tbody tr .player .player-stats .avatar .atp-flag use').each((i, use) => {
-      countries.push($(use).attr('href').split('/assets/atptour/assets/flags.svg#flag-')[1].toUpperCase());
-    });
-  
-      // Scraping names
-    $('.desktop-table tbody tr .player .player-stats .name a span').each((i, span) => {
-      names.push($(span).text().trim());
-    });
-  
-      // Scraping ages
-    $('.desktop-table tbody tr .age').each((i, td) => {
-      ages.push($(td).text().trim());
-    });
-  
-      // Scraping points
-    $('.desktop-table tbody tr .points a').each((i, a) => {
-      points.push($(a).text().trim());
-    });
-  
-      // Scraping tournaments played
-    $('.desktop-table tbody tr .tourns').each((i, td) => {
-      tournaments.push($(td).text().trim());
-    });
-  
-  
-    for (let i = 0; i < rankings.length; i++){
-      JSONResponse.push({
-        "ranking": rankings[i],
-        "country": countries[i],
-        "name": names[i],
-        "age": ages[i],
-        "points": points[i],
-        "tournaments_played": tournaments[i]
-      })
-    }
-  
-    // console.log(JSONResponse)
-    res.json(JSONResponse);
-  
-  } catch (error) {
-    console.error(error)
-    res.status(500).json({ error: 'Failed to fetch ATP Singles Rankings.' });
-  }
-})
-
-
-// ATP Race to London API response
+// GET /atp/rankings/singles-race
 router.get('/rankings/singles-race', async (req, res) => {
-
-  let rankings = [];
-  let countries = [];
-  let names = [];
-  let ages = [];
-  let points = [];
-  let JSONResponse = [];
-
-
-  try { 
-    const axiosResponse = await axios.get(ATP_SINGLES_RACE_URL, {
-      headers:
-        {'User-Agent': 'Mozilla/5.0 (X11; CrOS x86_64 8172.45.0) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/51.0.2704.64 Safari/537.36'}
-    },
-      { timeout: 2 }
-    )
-  
-      console.log("Inside ATP Singles Race Call")
-
-      console.log(axiosResponse.data)
-      const $ = cheerio.load(axiosResponse.data);
-  
-      // Scraping rankings
-      $('.desktop-table tbody tr .rank.bold.heavy').each((i, td) => {
-        rankings.push($(td).text().trim());
-      });
-  
-      // Scraping countries
-      $('.desktop-table tbody tr .player .player-stats .avatar .atp-flag use').each((i, use) => {
-        countries.push($(use).attr('href').split('/assets/atptour/assets/flags.svg#flag-')[1].toUpperCase());
-      });
-  
-      // Scraping names
-      $('.desktop-table tbody tr .player .player-stats .name a span').each((i, span) => {
-        names.push($(span).text().trim());
-      });
-  
-      // Scraping ages
-      $('.desktop-table tbody tr .age').each((i, td) => {
-        ages.push($(td).text().trim());
-      });
-  
-      // Scraping points
-      $('.desktop-table tbody tr .points').each((i, td) => {
-        points.push($(td).text().trim());
-      });
-  
-      for (let i = 0; i < rankings.length; i++){
-        JSONResponse.push({
-          "ranking": rankings[i],
-          "country": countries[i],
-          "name": names[i],
-          "age": ages[i],
-          "points": points[i],
-        })
-      }
-  
-      console.log(JSONResponse)
-  
-      res.json(JSONResponse);
-
-  }  catch (error) {
-    console.error(error)
-    res.status(500).json({ error: 'Failed to fetch ATP Singles Race Rankings.' });
-  }
+  await serveRoute(paths.ATP_SINGLES_RACE, scrapeATPSinglesRace, res);
 });
 
-// ATP doubles rankings API response
+// GET /atp/rankings/doubles
 router.get('/rankings/doubles', async (req, res) => {
-
-  let rankings = [];
-  let countries = [];
-  let names = [];
-  let ages = [];
-  let points = [];
-  let tournaments = [];
-  let JSONResponse = [];
-
-  try {
-
-    const axiosResponse = await axios.get(ATP_DOUBLES_URL, {
-      headers:
-        {'User-Agent': 'Mozilla/5.0 (X11; CrOS x86_64 8172.45.0) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/51.0.2704.64 Safari/537.36'}
-    },
-      { timeout: 2 }
-    )
-  
-      console.log("Inside ATP Doubles Call")
-  
-      const $ = cheerio.load(axiosResponse.data);
-  
-      // Scraping rankings
-      $('.desktop-table tbody tr .rank.bold.heavy').each((i, td) => {
-        rankings.push($(td).text().trim());
-      });
-  
-      // Scraping countries
-      $('.desktop-table tbody tr .player .player-stats .avatar .atp-flag use').each((i, use) => {
-        countries.push($(use).attr('href').split('/assets/atptour/assets/flags.svg#flag-')[1].toUpperCase());
-      });
-  
-      // Scraping names
-      $('.desktop-table tbody tr .player .player-stats .name a span').each((i, span) => {
-        names.push($(span).text().trim());
-      });
-  
-      // Scraping ages
-      $('.desktop-table tbody tr .age').each((i, td) => {
-        ages.push($(td).text().trim());
-      });
-  
-      // Scraping points
-      $('.desktop-table tbody tr .points a').each((i, a) => {
-        points.push($(a).text().trim());
-      });
-  
-      // Scraping tournaments played
-      $('.desktop-table tbody tr .tourns').each((i, td) => {
-        tournaments.push($(td).text().trim());
-      });
-  
-      for (let i = 0; i < rankings.length; i++){
-        JSONResponse.push({
-          "ranking": rankings[i],
-          "country": countries[i],
-          "name": names[i],
-          "age": ages[i],
-          "points": points[i],
-          "tournaments_played": tournaments[i]
-        })
-      }
-  
-      res.json(JSONResponse);
-
-  } catch (error) {
-    console.error(error)
-    res.status(500).json({ error: 'Failed to fetch ATP Doubles Rankings.' });
-  }
+  await serveRoute(paths.ATP_DOUBLES, scrapeATPDoubles, res);
 });
 
-// ATP doubles rankings API response
+// GET /atp/rankings/doubles-race
 router.get('/rankings/doubles-race', async (req, res) => {
-
-  let rankings = [];
-  let playerOneName = []
-  let playerOneCountry = []
-  let playerOneAge = []
-  let playerTwoName = []
-  let playerTwoCountry = []
-  let playerTwoAge = []
-  let points = [];
-  let tournaments = [];
-  let JSONResponse = [];
-
-  try {
-    const axiosResponse = await axios.get(ATP_DOUBLES_RACE_URL, {
-      headers:
-        {'User-Agent': 'Mozilla/5.0 (X11; CrOS x86_64 8172.45.0) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/51.0.2704.64 Safari/537.36'}
-      },
-        { timeout: 2 }
-    )
-  
-    console.log("Inside ATP Doubles Race Call")
-  
-    const $ = cheerio.load(axiosResponse.data);
-  
-      // Scraping rankings
-    $('.desktop-table tbody tr .rank.bold.heavy').each((i, td) => {
-      rankings.push($(td).text().trim());
-    });
-  
-      // Scraping countries (Player 1)
-    $('.desktop-table tbody tr .player .player-stats .name .player1 .atp-flag use').each((i, use) => {
-      playerOneCountry.push($(use).attr('href').split('/assets/atptour/assets/flags.svg#flag-')[1].toUpperCase())
-    });
-
-         // Scraping countries (Player 2)
-    $('.desktop-table tbody tr .player .player-stats .name .player2 .atp-flag use').each((i, use) => {
-      playerTwoCountry.push($(use).attr('href').split('/assets/atptour/assets/flags.svg#flag-')[1].toUpperCase())
-    });
-  
-      // Scraping Names (Player 1)
-    $('.desktop-table tbody tr .player .player-stats .name .player1 a').each((i, span) => {
-       playerOneName.push($(span).attr('href').split("/")[3].split("-").map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(" ").trim())
-    });
-
-    // Scraping Names (Player 2)
-    $('.desktop-table tbody tr .player .player-stats .name .player2 a').each((i, span) => {
-      playerTwoName.push($(span).attr('href').split("/")[3].split("-").map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(" ").trim())
-    });
-
-    // Scraping Ages
-    $('.desktop-table tbody tr .age.tiny-cell').each((i, td) => {
-      playerOneAge.push($(td).text().split("/")[0].trim())
-      playerTwoAge.push($(td).text().split("/")[1].trim())
-    });
-  
-      // Scraping points
-    $('.desktop-table tbody tr .points').each((i, td) => {
-      points.push($(td).text().trim());
-    });
-  
-    for (let i = 0; i < rankings.length; i++){
-      JSONResponse.push({
-        "ranking": rankings[i],
-        "player1": {
-          "name": playerOneName[i],
-          "country": playerOneCountry[i],
-          "age": playerOneAge[i]
-        },
-        "player2": {
-          "name": playerTwoName[i],
-          "country": playerTwoCountry[i],
-          "age": playerTwoAge[i]
-        },
-        "points": points[i],
-      })
-    }
-  
-    // console.log(JSONResponse)
-    res.json(JSONResponse);
-  
-  } catch (error) {
-    console.error(error)
-    res.status(500).json({ error: 'Failed to fetch ATP Doubles Race Rankings.' });
-  }
+  await serveRoute(paths.ATP_DOUBLES_RACE, scrapeATPDoublesRace, res);
 });
 
-// Export API routes
 module.exports = router;
