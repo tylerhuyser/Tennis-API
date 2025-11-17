@@ -51,7 +51,7 @@ async function scrapeATPDoubles(url) {
       name: names[i],
       age: ages[i],
       points: points[i],
-      tournaments_played: tournaments[i]
+      tournamentsPlayed: tournaments[i]
     })
   )
 }

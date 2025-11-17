@@ -4,7 +4,7 @@ module.exports = function buildEntry({
   name,
   age,
   points,
-  tournaments_played
+  tournamentsPlayed
 }) {
   return {
     ranking,
@@ -12,6 +12,6 @@ module.exports = function buildEntry({
     name,
     age,
     points,
-    tournaments_played
+    tournamentsPlayed
   };
 };
