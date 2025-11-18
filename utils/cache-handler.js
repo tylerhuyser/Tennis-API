@@ -36,8 +36,17 @@ function readFreshCache(filename) {
 }
 
 function writeCache(filename, data) {
+
+  if (!Array.isArray(data)) {
+    throw new Error(`writeCache expected array but received: ${typeof data}`);
+  }
+
+  const sorted = data
+  .filter(item => item && typeof item.ranking !== "undefined")
+  .sort((a, b) => Number(a.ranking) - Number(b.ranking));
+  
   const cachePath = getCachePath(filename);
-  fs.writeFileSync(cachePath, JSON.stringify(data, null, 2));
+  fs.writeFileSync(cachePath, JSON.stringify(sorted, null, 2));
 }
 
 function readStaleCache(filename) {
