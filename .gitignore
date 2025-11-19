@@ -11,3 +11,5 @@ node_modules/
 
 # Cache Directory
 cache/
+data/cache/
+app/cache/
