@@ -17,7 +17,7 @@ if (!fs.existsSync(CACHE_DIR)) {
 const ONE_WEEK = 7 * 24 * 60 * 60 * 1000;
 
 function getCachePath(filename) {
-  return path.join(__dirname, '../cache', filename);
+  return path.join(CACHE_DIR, filename);
 }
 
 function readFreshCache(filename) {
