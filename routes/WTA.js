@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { WTA_SCRAPE_URLS } = require("../utils/scrapeURLs");
+const { WTA_SCRAPE_URLS } = require("../utils/scrapeURLS");
 const cachePaths = require('../utils/cachePaths');
 const { serveRoute } = require('../utils/serveRoute');
 
