@@ -1,6 +1,6 @@
 // routes/ATP.js
 const router = require('express').Router();
-const { ATP_SCRAPE_URLS } = require("../utils/scrapeURLs");
+const { ATP_SCRAPE_URLS } = require("../utils/scrapeURLS");
 const cachePaths = require('../utils/cachePaths');
 const { serveRoute } = require('../utils/serveRoute');
 
