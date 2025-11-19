@@ -8,3 +8,8 @@ node_modules/
 
 # Idea
 .idea
+
+# Cache Directory
+cache/
+data/cache/
+app/cache/
