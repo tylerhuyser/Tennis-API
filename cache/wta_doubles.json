@@ -1,1 +1,704 @@
-[]
+{
+  "rankings": [
+    {
+      "ranking": 1,
+      "country": "CZE",
+      "name": "Katerina Siniakova",
+      "points": 8780,
+      "tournamentsPlayed": 15
+    },
+    {
+      "ranking": 2,
+      "country": "USA",
+      "name": "Taylor Townsend",
+      "points": 8485,
+      "tournamentsPlayed": 14
+    },
+    {
+      "ranking": 3,
+      "country": "ITA",
+      "name": "Sara Errani",
+      "points": 7195,
+      "tournamentsPlayed": 15
+    },
+    {
+      "ranking": 3,
+      "country": "ITA",
+      "name": "Jasmine Paolini",
+      "points": 7195,
+      "tournamentsPlayed": 15
+    },
+    {
+      "ranking": 5,
+      "country": "BEL",
+      "name": "Elise Mertens",
+      "points": 6730,
+      "tournamentsPlayed": 15
+    },
+    {
+      "ranking": 6,
+      "country": "RUS",
+      "name": "Veronika Kudermetova",
+      "points": 6635,
+      "tournamentsPlayed": 18
+    },
+    {
+      "ranking": 7,
+      "country": "LAT",
+      "name": "Jelena Ostapenko",
+      "points": 6405,
+      "tournamentsPlayed": 20
+    },
+    {
+      "ranking": 8,
+      "country": "NZL",
+      "name": "Erin Routliffe",
+      "points": 6330,
+      "tournamentsPlayed": 23
+    },
+    {
+      "ranking": 9,
+      "country": "TPE",
+      "name": "Su-Wei Hsieh",
+      "points": 6018,
+      "tournamentsPlayed": 18
+    },
+    {
+      "ranking": 10,
+      "country": "CAN",
+      "name": "Gabriela Dabrowski",
+      "points": 5666,
+      "tournamentsPlayed": 18
+    },
+    {
+      "ranking": 11,
+      "country": "RUS",
+      "name": "Diana Shnaider",
+      "points": 5160,
+      "tournamentsPlayed": 16
+    },
+    {
+      "ranking": 12,
+      "country": "RUS",
+      "name": "Mirra Andreeva",
+      "points": 4660,
+      "tournamentsPlayed": 14
+    },
+    {
+      "ranking": 13,
+      "country": "HUN",
+      "name": "Timea Babos",
+      "points": 4645,
+      "tournamentsPlayed": 28
+    },
+    {
+      "ranking": 14,
+      "country": "BRA",
+      "name": "Luisa Stefani",
+      "points": 4600,
+      "tournamentsPlayed": 25
+    },
+    {
+      "ranking": 15,
+      "country": "KAZ",
+      "name": "Anna Danilina",
+      "points": 4485,
+      "tournamentsPlayed": 27
+    },
+    {
+      "ranking": 16,
+      "country": "CHN",
+      "name": "Shuai Zhang",
+      "points": 4095,
+      "tournamentsPlayed": 22
+    },
+    {
+      "ranking": 17,
+      "country": "SRB",
+      "name": "Aleksandra Krunic",
+      "points": 3784,
+      "tournamentsPlayed": 16
+    },
+    {
+      "ranking": 18,
+      "country": "USA",
+      "name": "Nicole Melichar-Martinez",
+      "points": 3560,
+      "tournamentsPlayed": 28
+    },
+    {
+      "ranking": 19,
+      "country": "USA",
+      "name": "Asia Muhammad",
+      "points": 3505,
+      "tournamentsPlayed": 23
+    },
+    {
+      "ranking": 20,
+      "country": "RUS",
+      "name": "Alexandra Panova",
+      "points": 3435,
+      "tournamentsPlayed": 24
+    },
+    {
+      "ranking": 21,
+      "country": "NED",
+      "name": "Demi Schuurs",
+      "points": 3430,
+      "tournamentsPlayed": 22
+    },
+    {
+      "ranking": 22,
+      "country": "CHN",
+      "name": "Hanyu Guo",
+      "points": 3245,
+      "tournamentsPlayed": 15
+    },
+    {
+      "ranking": 23,
+      "country": "AUS",
+      "name": "Ellen Perez",
+      "points": 3185,
+      "tournamentsPlayed": 27
+    },
+    {
+      "ranking": 24,
+      "country": "GER",
+      "name": "Laura Siegemund",
+      "points": 2970,
+      "tournamentsPlayed": 14
+    },
+    {
+      "ranking": 25,
+      "country": "CHN",
+      "name": "Xinyu Jiang",
+      "points": 2946,
+      "tournamentsPlayed": 26
+    },
+    {
+      "ranking": 26,
+      "country": "GBR",
+      "name": "Olivia Nicholls",
+      "points": 2852,
+      "tournamentsPlayed": 28
+    },
+    {
+      "ranking": 27,
+      "country": "HUN",
+      "name": "Fanny Stollar",
+      "points": 2824,
+      "tournamentsPlayed": 27
+    },
+    {
+      "ranking": 28,
+      "country": "SVK",
+      "name": "Tereza Mihalikova",
+      "points": 2738,
+      "tournamentsPlayed": 28
+    },
+    {
+      "ranking": 29,
+      "country": "ESP",
+      "name": "Cristina Bucsa",
+      "points": 2697,
+      "tournamentsPlayed": 29
+    },
+    {
+      "ranking": 30,
+      "country": "UKR",
+      "name": "Lyudmyla Kichenok",
+      "points": 2625,
+      "tournamentsPlayed": 24
+    },
+    {
+      "ranking": 31,
+      "country": "TPE",
+      "name": "Fang-Hsien Wu",
+      "points": 2603,
+      "tournamentsPlayed": 28
+    },
+    {
+      "ranking": 32,
+      "country": "RUS",
+      "name": "Irina Khromacheva",
+      "points": 2568,
+      "tournamentsPlayed": 30
+    },
+    {
+      "ranking": 33,
+      "country": "AUS",
+      "name": "Storm Hunter",
+      "points": 2446,
+      "tournamentsPlayed": 19
+    },
+    {
+      "ranking": 34,
+      "country": "BRA",
+      "name": "Beatriz Haddad Maia",
+      "points": 2376,
+      "tournamentsPlayed": 13
+    },
+    {
+      "ranking": 35,
+      "country": "USA",
+      "name": "Sofia Kenin",
+      "points": 2247,
+      "tournamentsPlayed": 20
+    },
+    {
+      "ranking": 36,
+      "country": "USA",
+      "name": "Desirae Krawczyk",
+      "points": 2212,
+      "tournamentsPlayed": 29
+    },
+    {
+      "ranking": 37,
+      "country": "JPN",
+      "name": "Eri Hozumi",
+      "points": 2200,
+      "tournamentsPlayed": 28
+    },
+    {
+      "ranking": 38,
+      "country": "NOR",
+      "name": "Ulrikke Eikeri",
+      "points": 2188,
+      "tournamentsPlayed": 26
+    },
+    {
+      "ranking": 39,
+      "country": "RUS",
+      "name": "Anna Kalinskaya",
+      "points": 2120,
+      "tournamentsPlayed": 8
+    },
+    {
+      "ranking": 40,
+      "country": "TPE",
+      "name": "Hao-Ching Chan",
+      "points": 2069,
+      "tournamentsPlayed": 29
+    },
+    {
+      "ranking": 41,
+      "country": "CHN",
+      "name": "Yifan Xu",
+      "points": 1966,
+      "tournamentsPlayed": 29
+    },
+    {
+      "ranking": 42,
+      "country": "RUS",
+      "name": "Liudmila Samsonova",
+      "points": 1953,
+      "tournamentsPlayed": 15
+    },
+    {
+      "ranking": 43,
+      "country": "USA",
+      "name": "Caroline Dolehide",
+      "points": 1951,
+      "tournamentsPlayed": 16
+    },
+    {
+      "ranking": 44,
+      "country": "CHN",
+      "name": "Zhaoxuan Yang",
+      "points": 1944,
+      "tournamentsPlayed": 17
+    },
+    {
+      "ranking": 45,
+      "country": "JPN",
+      "name": "Miyu Kato",
+      "points": 1940,
+      "tournamentsPlayed": 26
+    },
+    {
+      "ranking": 46,
+      "country": "MEX",
+      "name": "Giuliana Olmos",
+      "points": 1844,
+      "tournamentsPlayed": 29
+    },
+    {
+      "ranking": 47,
+      "country": "JPN",
+      "name": "Shuko Aoyama",
+      "points": 1801,
+      "tournamentsPlayed": 26
+    },
+    {
+      "ranking": 48,
+      "country": "USA",
+      "name": "Mccartney Kessler",
+      "points": 1705,
+      "tournamentsPlayed": 12
+    },
+    {
+      "ranking": 49,
+      "country": "RUS",
+      "name": "Ekaterina Alexandrova",
+      "points": 1649,
+      "tournamentsPlayed": 14
+    },
+    {
+      "ranking": 50,
+      "country": "USA",
+      "name": "Peyton Stearns",
+      "points": 1625,
+      "tournamentsPlayed": 13
+    },
+    {
+      "ranking": 51,
+      "country": "INA",
+      "name": "Aldila Sutjiadi",
+      "points": 1609,
+      "tournamentsPlayed": 29
+    },
+    {
+      "ranking": 52,
+      "country": "UKR",
+      "name": "Nadiia Kichenok",
+      "points": 1573,
+      "tournamentsPlayed": 25
+    },
+    {
+      "ranking": 53,
+      "country": "FRA",
+      "name": "Kristina Mladenovic",
+      "points": 1561,
+      "tournamentsPlayed": 10
+    },
+    {
+      "ranking": 54,
+      "country": "AUS",
+      "name": "Maya Joint",
+      "points": 1529,
+      "tournamentsPlayed": 17
+    },
+    {
+      "ranking": 55,
+      "country": "RUS",
+      "name": "Kamilla Rakhimova",
+      "points": 1526,
+      "tournamentsPlayed": 16
+    },
+    {
+      "ranking": 56,
+      "country": "AUS",
+      "name": "Olivia Gadecki",
+      "points": 1525,
+      "tournamentsPlayed": 15
+    },
+    {
+      "ranking": 57,
+      "country": "ROU",
+      "name": "Sorana Cirstea",
+      "points": 1514,
+      "tournamentsPlayed": 6
+    },
+    {
+      "ranking": 58,
+      "country": "CZE",
+      "name": "Anna Siskova",
+      "points": 1513,
+      "tournamentsPlayed": 20
+    },
+    {
+      "ranking": 59,
+      "country": "POL",
+      "name": "Katarzyna Piter",
+      "points": 1490,
+      "tournamentsPlayed": 28
+    },
+    {
+      "ranking": 60,
+      "country": "JPN",
+      "name": "Makoto Ninomiya",
+      "points": 1481,
+      "tournamentsPlayed": 30
+    },
+    {
+      "ranking": 61,
+      "country": "USA",
+      "name": "Coco Gauff",
+      "points": 1430,
+      "tournamentsPlayed": 3
+    },
+    {
+      "ranking": 62,
+      "country": "USA",
+      "name": "Quinn Gleason",
+      "points": 1389,
+      "tournamentsPlayed": 29
+    },
+    {
+      "ranking": 63,
+      "country": "USA",
+      "name": "Caty Mcnally",
+      "points": 1369,
+      "tournamentsPlayed": 16
+    },
+    {
+      "ranking": 64,
+      "country": "USA",
+      "name": "Sabrina Santamaria",
+      "points": 1295,
+      "tournamentsPlayed": 29
+    },
+    {
+      "ranking": 65,
+      "country": "CZE",
+      "name": "Linda Noskova",
+      "points": 1278,
+      "tournamentsPlayed": 18
+    },
+    {
+      "ranking": 66,
+      "country": "CZE",
+      "name": "Miriam Skoch",
+      "points": 1269,
+      "tournamentsPlayed": 28
+    },
+    {
+      "ranking": 67,
+      "country": "CZE",
+      "name": "Barbora Krejcikova",
+      "points": 1236,
+      "tournamentsPlayed": 8
+    },
+    {
+      "ranking": 68,
+      "country": "RUS",
+      "name": "Maria Kozyreva",
+      "points": 1231,
+      "tournamentsPlayed": 31
+    },
+    {
+      "ranking": 69,
+      "country": "ROU",
+      "name": "Elena-Gabriela Ruse",
+      "points": 1227,
+      "tournamentsPlayed": 10
+    },
+    {
+      "ranking": 70,
+      "country": "CHN",
+      "name": "Qianhui Tang",
+      "points": 1186,
+      "tournamentsPlayed": 32
+    },
+    {
+      "ranking": 71,
+      "country": "BEL",
+      "name": "Magali Kempen",
+      "points": 1182,
+      "tournamentsPlayed": 25
+    },
+    {
+      "ranking": 72,
+      "country": "CAN",
+      "name": "Leylah Fernandez",
+      "points": 1181,
+      "tournamentsPlayed": 15
+    },
+    {
+      "ranking": 73,
+      "country": "RUS",
+      "name": "Elena Pridankina",
+      "points": 1174,
+      "tournamentsPlayed": 28
+    },
+    {
+      "ranking": 74,
+      "country": "CZE",
+      "name": "Jesika Maleckova",
+      "points": 1149,
+      "tournamentsPlayed": 25
+    },
+    {
+      "ranking": 75,
+      "country": "DEN",
+      "name": "Clara Tauson",
+      "points": 1146,
+      "tournamentsPlayed": 15
+    },
+    {
+      "ranking": 76,
+      "country": "GBR",
+      "name": "Maia Lumsden",
+      "points": 1135,
+      "tournamentsPlayed": 28
+    },
+    {
+      "ranking": 77,
+      "country": "BLR",
+      "name": "Iryna Shymanovich",
+      "points": 1130,
+      "tournamentsPlayed": 22
+    },
+    {
+      "ranking": 78,
+      "country": "BRA",
+      "name": "Ingrid Martins",
+      "points": 1074,
+      "tournamentsPlayed": 26
+    },
+    {
+      "ranking": 79,
+      "country": "CZE",
+      "name": "Anastasia Detiuc",
+      "points": 1059,
+      "tournamentsPlayed": 27
+    },
+    {
+      "ranking": 80,
+      "country": "NED",
+      "name": "Isabelle Haverlag",
+      "points": 1046,
+      "tournamentsPlayed": 32
+    },
+    {
+      "ranking": 81,
+      "country": "CHN",
+      "name": "Saisai Zheng",
+      "points": 1014,
+      "tournamentsPlayed": 18
+    },
+    {
+      "ranking": 82,
+      "country": "BRA",
+      "name": "Laura Pigossi",
+      "points": 1000,
+      "tournamentsPlayed": 27
+    },
+    {
+      "ranking": 83,
+      "country": "GEO",
+      "name": "Oksana Kalashnikova",
+      "points": 993,
+      "tournamentsPlayed": 25
+    },
+    {
+      "ranking": 84,
+      "country": "INA",
+      "name": "Janice Tjen",
+      "points": 984,
+      "tournamentsPlayed": 20
+    },
+    {
+      "ranking": 85,
+      "country": "TPE",
+      "name": "En-Shuo Liang",
+      "points": 976,
+      "tournamentsPlayed": 17
+    },
+    {
+      "ranking": 86,
+      "country": "CHN",
+      "name": "Yue Yuan",
+      "points": 975,
+      "tournamentsPlayed": 6
+    },
+    {
+      "ranking": 87,
+      "country": "MEX",
+      "name": "Renata Zarazua",
+      "points": 974,
+      "tournamentsPlayed": 18
+    },
+    {
+      "ranking": 88,
+      "country": "UKR",
+      "name": "Marta Kostyuk",
+      "points": 942,
+      "tournamentsPlayed": 8
+    },
+    {
+      "ranking": 89,
+      "country": "GBR",
+      "name": "Emily Appleton",
+      "points": 912,
+      "tournamentsPlayed": 31
+    },
+    {
+      "ranking": 90,
+      "country": "SUI",
+      "name": "Simona Waltert",
+      "points": 911,
+      "tournamentsPlayed": 11
+    },
+    {
+      "ranking": 91,
+      "country": "CHN",
+      "name": "Xinyu Wang",
+      "points": 908,
+      "tournamentsPlayed": 12
+    },
+    {
+      "ranking": 92,
+      "country": "SRB",
+      "name": "Olga Danilovic",
+      "points": 905,
+      "tournamentsPlayed": 7
+    },
+    {
+      "ranking": 93,
+      "country": "HKG",
+      "name": "Eudice Chong",
+      "points": 871,
+      "tournamentsPlayed": 20
+    },
+    {
+      "ranking": 94,
+      "country": "EGY",
+      "name": "Mayar Sherif",
+      "points": 863,
+      "tournamentsPlayed": 13
+    },
+    {
+      "ranking": 95,
+      "country": "JPN",
+      "name": "Momoko Kobori",
+      "points": 853,
+      "tournamentsPlayed": 24
+    },
+    {
+      "ranking": 96,
+      "country": "USA",
+      "name": "Ashlyn Krueger",
+      "points": 850,
+      "tournamentsPlayed": 14
+    },
+    {
+      "ranking": 97,
+      "country": "ROU",
+      "name": "Monica Niculescu",
+      "points": 832,
+      "tournamentsPlayed": 19
+    },
+    {
+      "ranking": 98,
+      "country": "SVK",
+      "name": "Rebecca Sramkova",
+      "points": 832,
+      "tournamentsPlayed": 11
+    },
+    {
+      "ranking": 99,
+      "country": "AUS",
+      "name": "Priscilla Hon",
+      "points": 829,
+      "tournamentsPlayed": 6
+    },
+    {
+      "ranking": 100,
+      "country": "ITA",
+      "name": "Angelica Moratelli",
+      "points": 828,
+      "tournamentsPlayed": 30
+    }
+  ]
+}

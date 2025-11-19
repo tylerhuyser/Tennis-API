@@ -20,13 +20,13 @@ function readFreshCache(filename) {
         const json = JSON.parse(raw);
 
         // If data is empty, treat as stale
-        if (!json.data || json.data.length === 0) {
+        if (!json.rankings || json.rankings.length === 0) {
           return null;
         }
 
         return json;
       } catch (err) {
-        // Invalid JSON → treat as stale
+        
         return null;
       }
     }
@@ -46,7 +46,7 @@ function writeCache(filename, data) {
   .sort((a, b) => Number(a.ranking) - Number(b.ranking));
   
   const cachePath = getCachePath(filename);
-  fs.writeFileSync(cachePath, JSON.stringify(sorted, null, 2));
+  fs.writeFileSync(cachePath, JSON.stringify({ rankings: sorted }, null, 2));
 }
 
 function readStaleCache(filename) {
