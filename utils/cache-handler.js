@@ -1,6 +1,19 @@
 const fs = require('fs');
 const path = require('path');
 
+// Is APP running in Production or Development Environment?
+const IS_PRODUCTION = !!process.env.tennis - api;
+
+// If APP is running in Production, create Cache in project-root/cache, otherwise store at /data/cache
+const CACHE_DIR = IS_PRODUCTION
+  ? '/data/cache'
+  : path.join(__dirname, '../cache');
+
+// In either environment, ensure that the cache directory exists. If not, create.
+if (!fs.existsSync(CACHE_DIR)) {
+  fs.mkdirSync(CACHE_DIR, { recursive: true });
+}
+
 const ONE_WEEK = 7 * 24 * 60 * 60 * 1000;
 
 function getCachePath(filename) {
