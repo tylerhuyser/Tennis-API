@@ -11,8 +11,9 @@ primary_region = 'ewr'
 [http_service]
   internal_port = 3500
   force_https = true
-  auto_stop_machines = "never"
   min_machines_running = 1
+  auto_stop_machines = "suspend"
+  auto_start_machines = "true"
   processes = ['app']
 
 [[vm]]
