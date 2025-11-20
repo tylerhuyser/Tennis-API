@@ -29,8 +29,7 @@ function readFreshCache(filename) {
 
     if (isFresh) {
       try {
-        const raw = fs.readFileSync(cachePath, 'utf8');
-        const json = JSON.parse(raw);
+        const json = JSON.parse(fs.readFileSync(cachePath, 'utf8'));
 
         // If data is empty, treat as stale
         if (!json.rankings || json.rankings.length === 0) {
@@ -59,13 +58,21 @@ function writeCache(filename, data) {
   .sort((a, b) => Number(a.ranking) - Number(b.ranking));
   
   const cachePath = getCachePath(filename);
-  fs.writeFileSync(cachePath, JSON.stringify({ rankings: sorted }, null, 2));
+  fs.writeFileSync(
+    cachePath,
+    JSON.stringify(
+      { rankings: sorted, lastUpdated: new Date().toISOString() },
+      null,
+      2
+    )
+  );
 }
 
 function readStaleCache(filename) {
   const cachePath = getCachePath(filename);
   if (fs.existsSync(cachePath)) {
-    return JSON.parse(fs.readFileSync(cachePath, 'utf8'));
+    const json = JSON.parse(fs.readFileSync(cachePath, 'utf8'));
+    return json;
   }
   return null;
 }

@@ -25,3 +25,8 @@ primary_region = 'ewr'
 [mounts]
   source="cache_data"
   destination="/data"
+
+[[services.cron]]
+  name = "cache-populate"
+  schedule = "0 17 * * 1" # Every Monday at 12pm EST = 17:00 UTC
+  command = ["node", "cronScripts/populateCache.js"]
