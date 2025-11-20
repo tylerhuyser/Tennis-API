@@ -1,5 +1,5 @@
-import fetch from "node-fetch";
-import { URL } from "url";
+const fetch = require("node-fetch");
+const { URL } = require("url")
 
 const BASE_URL = "https://tennis-api.fly.dev";
 
@@ -26,13 +26,13 @@ async function fetchWithRetries(url, retries = MAX_RETRIES) {
 
       if (!res.ok) throw new Error(`${res.status} ${res.statusText}`);
 
-      console.log(`✅ Successfully fetched ${url}`);
+      console.log(`Successfully fetched ${url}`);
 
       return;
     } catch (err) {
 
       console.warn(
-        `⚠️ Attempt ${attempt} failed for ${url}: ${err.message}`
+        `Attempt ${attempt} failed for ${url}: ${err.message}`
       );
 
       if (attempt < retries) {
@@ -40,8 +40,8 @@ async function fetchWithRetries(url, retries = MAX_RETRIES) {
         await new Promise((r) => setTimeout(r, RETRY_DELAY));
 
       } else {
-        
-        console.error(`❌ Failed to fetch ${url} after ${retries} attempts`);
+
+        console.error(`Failed to fetch ${url} after ${retries} attempts`);
       }
     }
   }
