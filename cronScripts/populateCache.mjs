@@ -1,7 +1,7 @@
 import fetch from "node-fetch";
 import { URL } from "url"
 
-const BASE_URL = "https://tennis-api.fly.dev";
+const BASE_URL = "https://tennis-api.fly.dev/api";
 
 const endpoints = [
   "/atp/rankings/singles",
