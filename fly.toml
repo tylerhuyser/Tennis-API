@@ -13,7 +13,7 @@ primary_region = 'ewr'
   force_https = true
   min_machines_running = 1
   auto_stop_machines = "suspend"
-  auto_start_machines = "true"
+  auto_start_machines = true
   processes = ['app']
 
 [[vm]]
