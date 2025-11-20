@@ -4,14 +4,14 @@ import { URL } from "url"
 const BASE_URL = "https://tennis-api.fly.dev/api/";
 
 const endpoints = [
-  "/atp/rankings/singles",
-  "/atp/rankings/singles-race",
-  "/atp/rankings/doubles",
-  "/atp/rankings/doubles-race",
-  "/wta/rankings/singles",
-  "/wta/rankings/singles-race",
-  "/wta/rankings/doubles",
-  "/wta/rankings/doubles-race",
+  "atp/rankings/singles",
+  "atp/rankings/singles-race",
+  "atp/rankings/doubles",
+  "atp/rankings/doubles-race",
+  "wta/rankings/singles",
+  "wta/rankings/singles-race",
+  "wta/rankings/doubles",
+  "wta/rankings/doubles-race",
 ];
 
 const MAX_RETRIES = 10;
