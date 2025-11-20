@@ -1,5 +1,5 @@
-const fetch = require("node-fetch");
-const { URL } = require("url")
+import fetch from "node-fetch";
+import { URL } from "url"
 
 const BASE_URL = "https://tennis-api.fly.dev";
 
