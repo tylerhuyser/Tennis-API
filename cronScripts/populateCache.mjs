@@ -27,23 +27,21 @@ async function fetchWithRetries(url, retries = MAX_RETRIES) {
 
       if (!res.ok) throw new Error(`${res.status} ${res.statusText}`);
 
-      console.log(`Successfully fetched ${url}`);
+      const data = await res.json();
+      console.log(`Successfully fetched ${url} - source: ${data.source}`);
+      
+      const wasUpdated = data.source === 'fresh';
+      return { success: true, wasUpdated };
 
-      return true;
     } catch (err) {
-
       console.warn(
         `Attempt ${attempt} failed for ${url}: ${err.message}`
       );
-
       if (attempt < retries) {
-
         await new Promise((r) => setTimeout(r, RETRY_DELAY));
-
       } else {
-
         console.error(`Failed to fetch ${url} after ${retries} attempts`);
-        return false
+        return  { success: false, wasUpdated: false };
       }
     }
   }
@@ -51,14 +49,16 @@ async function fetchWithRetries(url, retries = MAX_RETRIES) {
 
 async function populateCache() {
   let allSuccessful = true;
+  let anyUpdated = false;
 
   for (const endpoint of endpoints) {
     const url = new URL(endpoint, BASE_URL).toString();
-    await fetchWithRetries(url);
-    if (!success) allSuccessful = false;
+    const result = await fetchWithRetries(url);
+    if (!result.success) allSuccessful = false;
+    if (result.wasUpdated) anyUpdated = true;
   }
 
-  return allSuccessful;
+  return { allSuccessful, anyUpdated };
 }
 
 
@@ -81,12 +81,14 @@ async function triggerNetlifyBuild() {
 }
 
 populateCache()
-  .then(async (success) => {
-    if (success) {
-      console.log("Cache population completed successfully.");
+  .then(async ({ allSuccessful, anyUpdated }) => {
+    if (allSuccessful && anyUpdated) {
+      console.log("Cache updated with fresh data - triggering Netlify rebuild");
       await triggerNetlifyBuild();
+    } else if (allSuccessful && !anyUpdated) {
+      console.log("All data still fresh from cache - no rebuild needed");
     } else {
-      console.error("Cache population had failures, skipping Netlify trigger.");
+      console.warn("Some endpoints failed - skipping Netlify rebuild");
     }
   })
   .catch((err) => console.error("Unexpected error:", err));
