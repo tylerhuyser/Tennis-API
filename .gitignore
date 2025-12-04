@@ -9,6 +9,9 @@ node_modules/
 # Idea
 .idea
 
+# Environment Variables
+.env
+
 # Cache Directory
 cache/
 data/cache/

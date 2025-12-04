@@ -11,7 +11,7 @@ primary_region = 'ewr'
 [http_service]
   internal_port = 3500
   force_https = true
-  min_machines_running = 1
+  min_machines_running = 0
   auto_stop_machines = "suspend"
   auto_start_machines = true
   processes = ['app']
@@ -25,8 +25,3 @@ primary_region = 'ewr'
 [mounts]
   source="cache_data"
   destination="/data"
-
-[[services.cron]]
-  name = "cache-populate"
-  schedule = "0 17 * * 1" # Every Monday at 12pm EST = 17:00 UTC
-  command = ["node", "cronScripts/populateCache.js"]
