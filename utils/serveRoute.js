@@ -55,8 +55,14 @@ async function serveRoute(cacheKey, scraper, url, res) {
         lastUpdated: stale.lastUpdated
       });
 
-    // 4) Otherwise, Serve a Hard Failure
-    return res.status(500).json({ error: 'Failed to fetch rankings.' });
+      // 4) Return empty rankings.
+      console.warn(`[${cacheKey}] No cache available and scraping failed — returning empty rankings.`);
+      return res.json({ 
+        source: 'error-fallback',
+        rankings: [], 
+        lastUpdated: new Date().toISOString(),
+        message: 'Rankings temporarily unavailable'
+      });
   }
 }
 
