@@ -16,7 +16,7 @@ app.post('/trigger-crawl', async (req, res) => {
   }
   
   const { exec } = require('child_process');
-  exec('node cronScripts/populateCache.js', (error, stdout, stderr) => {
+  exec('node cronScripts/populateCache.mjs', (error, stdout, stderr) => {
     if (error) {
       console.error(`Crawl error: ${error}`);
       return;
