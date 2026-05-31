@@ -4,6 +4,9 @@ const buildEntry = require('./buildEntry');
 
 async function scrapeATPSingles(url) {
   const response = await fetchBrowser(url);
+  const html = response.data;
+console.log('HTML length:', html.length);
+console.log('HTML snippet:', html.slice(0, 1000));
 
   const $ = cheerio.load(response.data);
 
