@@ -11,7 +11,8 @@ WORKDIR /app
 
 # Set production environment
 ENV NODE_ENV="production"
-
+ENV PUPPETEER_SKIP_CHROMIUM_DOWNLOAD=true
+ENV PUPPETEER_EXECUTABLE_PATH=/usr/bin/chromium
 
 # Throw-away build stage to reduce size of final image
 FROM base AS build
@@ -29,7 +30,12 @@ COPY . .
 
 
 # Final stage for app image
-FROM base
+FROM base AS final
+
+# Install Chromium
+RUN apt-get update -qq && \
+    apt-get install --no-install-recommends -y chromium && \
+    rm -rf /var/lib/apt/lists/*
 
 # Copy built application
 COPY --from=build /app /app

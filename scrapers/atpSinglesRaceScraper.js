@@ -1,9 +1,10 @@
 const cheerio = require('cheerio');
-const fetchPage = require('../utils/fetchPage');
+const fetchBrowser = require('../utils/fetchBrowser');
 const buildEntry = require('./buildEntry');
 
 async function scrapeATPSinglesRace(url) {
-  const response = await fetchPage(url);
+  const response = await fetchBrowser(url);
+  console.log(response)
 
   const $ = cheerio.load(response.data);
 
